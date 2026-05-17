@@ -2,7 +2,7 @@
 
 Projekt symuluje awarię systemu transakcyjnego w banku oraz przedstawia proces analizy problemu przy użyciu bazy danych PostgreSQL uruchomionej w kontenerze Docker.
 
-====================================================================================================================================================================================================================
+
 
 ## Jak uruchomić to środowisko?
 
@@ -22,7 +22,7 @@ Projekt symuluje awarię systemu transakcyjnego w banku oraz przedstawia proces 
    
 5. Wpisujemy polecenia z pliku init.sql, które tworzą tabele, dodają dane i analizują incydent.
 
-====================================================================================================================================================================================================================
+
 
 ## Przebieg wdrożenie i analizy incydentu
 
