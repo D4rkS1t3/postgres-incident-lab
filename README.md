@@ -28,6 +28,7 @@ Projekt symuluje awarię systemu transakcyjnego w banku oraz przedstawia proces 
 
 ### 1. Uruchomienie środowiska bazodanowego
 Weryfikacja stanu kontera aplikacyjnego za pomocą narzędzia Docker.
+
 ![Status kontenera Docker](1.png)
 
 ---
