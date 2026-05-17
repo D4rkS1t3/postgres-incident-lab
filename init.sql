@@ -1,4 +1,7 @@
+-- =================================================
 -- 1. TWORZENIE TABELI
+-- =================================================
+
 CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
   user_id INT,
@@ -7,7 +10,10 @@ CREATE TABLE transactions (
   created_at TIMESTAMP
 );
 
+-- =================================================
 -- 2. DODANIE TESTOWYCH DANYCH
+-- =================================================
+
 INSERT INTO transactions (user_id, amount, status, created_at)
 VALUES
 (1, 100.50, 'SUCCESS', NOW()),
@@ -16,9 +22,18 @@ VALUES
 (4, 15.00, 'FAILED', NOW()),
 (5, 500.00, 'SUCCESS', NOW());
 
--- 3. OBSŁUGA INCYDENTU
--- SZUKANIE NIEUDANYCH TRANSAKCJI
+-- =================================================
+-- 3. ANALIZA INCYDENTU (INVESTIGATION)
+-- =================================================
+
+-- KROK 1: PODSUMOWANIE STATUSÓW (OGÓLNA SKALA PROBLEMU)
+SELECT status, COUNT(*) FROM transactions GROUP BY status;
+
+-- KROK 2: WYCIĄGNIĘCIE LISTY WSZYSTKICH NIEUDANYCH TRANSAKCJI
 SELECT * FROM transactions WHERE status = 'FAILED';
 
--- PODSUMOWANIE STATUSÓW
-SELECT status, COUNT(*) FROM transactions GROUP BY status;
+-- KROK 3: SORTOWANIE BŁĘDÓW OD NAJWYŻSZEJ KWOTY (SZUKANIE TRANSAKCJI O WYSOKIM PRIORYTECIE)
+SELECT * FROM transcations WHERE status = 'FAILED' ORDER BY amount DESC;
+
+-- KROK 4: ANALIZA OSI CZASU (KIEDY WYSTĄPIŁO NAJWIĘCEJ BŁĘDÓW)
+SELECT created_at, COUNT(*) FROM transactions WHERE status = 'FAILED' GROUP BY created_at ORDER BY COUNT(*) DESC;
